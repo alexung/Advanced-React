@@ -1,10 +1,20 @@
 # this is for the Yoga Server
 # must have something that this file can resolve to. Our createServer() has resolvers for both of these types, so we neeed them.
 # Yoga doesn't expose everything from our Prisma GraphQL server, we need to explicitly have them here.
+type Dog {
+  name: String!
+}
+
 type Mutation {
-  hi: String
+  createDog(name: String!): Dog
 }
 
 type Query {
-  hi: String
+  dogs: [Dog]! # this means that there needs to be an array, and in each item it needs to be a Dog (no nulls are allowed)
 }
+
+# type Query {
+#   hi: String
+# }
+
+# when you create a new query, you need to setup a resolver
