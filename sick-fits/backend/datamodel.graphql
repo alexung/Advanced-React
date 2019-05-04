@@ -1,18 +1,19 @@
+# datamodel for Prisma and for data model that lives below Prisma
 type User {
-  id: ID! @id
+  id: ID! @unique;
   name: String!
   email: String!
 }
 
 type Item {
-  id: ID! @id
+  id: ID! @unique
   title: String!
   description: String!
   image: String
   largeImage: String
   price: Int!
   # DateTime is a type that's exposed by Prisma, if not using Prisma, I'll need to define this type myself
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! 
+  updatedAt: DateTime!
   # user: User!
 }

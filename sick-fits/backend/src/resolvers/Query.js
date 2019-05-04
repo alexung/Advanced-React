@@ -1,10 +1,15 @@
+// this is for Yoga GraphQL
+
+const { forwardTo } = require("prisma-binding");
+// forward to basically copies the prisma query settings to Yoga GraphQL
+
+// this is a resolver below!
 const Query = {
-  // shorthand for function dogs().
-  // ctx gives us access to headers
-  dogs(parent, args, ctx, info) {
-    global.dogs = global.dogs || [];
-    return global.dogs;
-  }
+  items: forwardTo("db")
+  // async items(parent, args, ctx, info) {
+  //   const items = await ctx.db.query.items();
+  //   return items;
+  // }
 };
 
 module.exports = Query;
