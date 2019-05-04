@@ -29,6 +29,7 @@ const NavStyles = styled.ul`
       height: 100%;
       left: 0;
       position: absolute;
+      /* skew allows for the line to be titled on the navbar...pretty cool */
       transform: skew(-20deg);
       top: 0;
       bottom: 0;
