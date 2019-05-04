@@ -1,0 +1,10 @@
+# this is for the Yoga Server
+# must have something that this file can resolve to. Our createServer() has resolvers for both of these types, so we neeed them.
+# Yoga doesn't expose everything from our Prisma GraphQL server, we need to explicitly have them here.
+type Mutation {
+  hi: String
+}
+
+type Query {
+  hi: String
+}
