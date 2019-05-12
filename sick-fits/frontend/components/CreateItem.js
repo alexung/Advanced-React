@@ -48,6 +48,7 @@ class CreateItem extends Component {
 
   render() {
     // apollo handles the loading boolean for us!!
+    // variables is how they get the mapping b/w title, desc, price, etc.
     return (
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error }) => (
