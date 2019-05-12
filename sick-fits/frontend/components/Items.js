@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
+
 import Item from "./Item";
 
 const ALL_ITEMS_QUERY = gql`
@@ -29,12 +30,15 @@ const ItemsList = styled.div`
   margin: 0 auto;
 `;
 
-class Items extends Component {
+export default class Items extends Component {
   render() {
     return (
-      <Center>
+      <div>
         <Query query={ALL_ITEMS_QUERY}>
+          {/** Lots more in the payload vv */}
           {({ data, error, loading }) => {
+            console.log({ data, error, loading });
+            // should prob check before returning, for loading/error
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error.message}</p>;
             return (
@@ -46,10 +50,9 @@ class Items extends Component {
             );
           }}
         </Query>
-      </Center>
+      </div>
     );
   }
 }
 
-export default Items;
 export { ALL_ITEMS_QUERY };
