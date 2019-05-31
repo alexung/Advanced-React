@@ -39,6 +39,9 @@ export default class Items extends Component {
         <Pagination page={this.props.page} />
         <Query
           query={ALL_ITEMS_QUERY}
+          // EXPLANATION OF SKIP: if you're on page 1 * perPage (4) - 4, then we skip no items
+          // if you're on page 2 * 4 - 4 = 4, skip 4 items
+          // if you're on page 3 * 4 - 4 = 8, skip 8 items, and so on...
           variables={{ skip: this.props.page * perPage - perPage }}
         >
           {/** Lots more in the payload vv */}
