@@ -1,19 +1,32 @@
+enum Permission {
+  ADMIN
+  USER
+  ITEMCREATE
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
+}
+
 # datamodel for Prisma and for data model that lives below Prisma
 type User {
-  id: ID! @unique;
+  id: ID! @id
   name: String!
-  email: String!
+  email: String! @unique
+  password: String!
+  resetToken: String
+  resetTokenExpiry: String
+  permissions: [Permission] @scalarList(strategy: RELATION)
 }
 
 type Item {
-  id: ID! @unique
+  id: ID! @id
   title: String!
   description: String!
   image: String
   largeImage: String
   price: Int!
   # DateTime is a type that's exposed by Prisma, if not using Prisma, I'll need to define this type myself
-  createdAt: DateTime! 
+  createdAt: DateTime!
   updatedAt: DateTime!
   # user: User!
 }
